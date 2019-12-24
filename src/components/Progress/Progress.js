@@ -6,7 +6,7 @@ const Progress = ({ currentPage, totalPages }) => {
   return (
     <div>
       <p className={styles.progress}>
-        {currentPage}/{totalPages.length}
+        {currentPage}/{totalPages}
       </p>
     </div>
   );
@@ -14,7 +14,7 @@ const Progress = ({ currentPage, totalPages }) => {
 
 Progress.propTypes = {
   currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  totalPages: PropTypes.number.isRequired,
 };
 
 export default Progress;

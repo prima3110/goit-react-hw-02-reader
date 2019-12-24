@@ -34,17 +34,23 @@ export default class Reader extends Component {
     const { publicationIndex } = this.state;
     const { items } = this.props;
     const publication = items[publicationIndex];
+    const totalPages = items.length;
+    const firstPublication = publicationIndex === 0;
+    const lastPublication = publicationIndex === totalPages - 1;
     return (
-      <div>
+      <>
         <Controls
-          publicationIndex={publicationIndex}
+          firstPublication={firstPublication}
+          lastPublication={lastPublication}
           onPrevClick={this.handlePrevClick}
           onNextClick={this.handleNextClick}
-          totalPages={items}
         />
-        <Progress currentPage={publicationIndex + 1} totalPages={items} />
-        <Publication publication={publication} />
-      </div>
+        <Progress currentPage={publicationIndex + 1} totalPages={totalPages} />
+        <Publication
+          currentPage={publicationIndex + 1}
+          publication={publication}
+        />
+      </>
     );
   }
 }

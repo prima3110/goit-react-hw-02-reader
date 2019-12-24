@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './Controls.module.css';
 
 const Controls = ({
-  publicationIndex,
+  firstPublication,
+  lastPublication,
   onNextClick,
   onPrevClick,
-  totalPages,
 }) => {
   return (
     <div>
@@ -15,7 +15,7 @@ const Controls = ({
           className={styles.button}
           type="button"
           onClick={onPrevClick}
-          disabled={publicationIndex === 0}
+          disabled={firstPublication}
         >
           Назад
         </button>
@@ -23,7 +23,7 @@ const Controls = ({
           className={styles.button}
           type="button"
           onClick={onNextClick}
-          disabled={publicationIndex === totalPages.length - 1}
+          disabled={lastPublication}
         >
           Вперед
         </button>
@@ -33,10 +33,10 @@ const Controls = ({
 };
 
 Controls.propTypes = {
-  publicationIndex: PropTypes.number.isRequired,
+  firstPublication: PropTypes.bool.isRequired,
+  lastPublication: PropTypes.bool.isRequired,
   onPrevClick: PropTypes.func.isRequired,
   onNextClick: PropTypes.func.isRequired,
-  totalPages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Controls;

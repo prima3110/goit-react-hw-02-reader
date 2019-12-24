@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Publication = ({ publication: { title, text } }) => {
+const Publication = ({ publication: { title, text }, currentPage }) => {
   return (
     <div>
       <article>
-        <h2>{title}</h2>
+        <h2>
+          {currentPage}. {title}
+        </h2>
         <p>{text}</p>
       </article>
     </div>
@@ -13,6 +15,7 @@ const Publication = ({ publication: { title, text } }) => {
 };
 
 Publication.propTypes = {
+  currentPage: PropTypes.number.isRequired,
   publication: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
